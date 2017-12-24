@@ -14,9 +14,6 @@ namespace Modul_11_Black_Jack
 		{
 			Game game = new Game();
 
-
-			
-
 		}
 	}
 }
