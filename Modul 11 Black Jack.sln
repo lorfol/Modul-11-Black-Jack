@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27130.2003
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modul 11 Black Jack", "Modul 11 Black Jack\Modul 11 Black Jack.csproj", "{9490968A-1BD4-416B-9B6C-22F73CAB58E0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameDB", "Game DB\GameDB.csproj", "{71984DAF-45B7-4BBE-B216-DECE503776FB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{9490968A-1BD4-416B-9B6C-22F73CAB58E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9490968A-1BD4-416B-9B6C-22F73CAB58E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9490968A-1BD4-416B-9B6C-22F73CAB58E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71984DAF-45B7-4BBE-B216-DECE503776FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71984DAF-45B7-4BBE-B216-DECE503776FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71984DAF-45B7-4BBE-B216-DECE503776FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71984DAF-45B7-4BBE-B216-DECE503776FB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
