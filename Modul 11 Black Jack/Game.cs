@@ -192,35 +192,35 @@ namespace Modul_11_Black_Jack
 			}
 		}
 
-		//string _winer;
-		//string _looser;
-		//int winersPoints;
-		//int loosersPoints;
+		string _winer;
+		string _looser;
+		int winersPoints;
+		int loosersPoints;
 
-		//public override string ToString()
-		//{
-		//	if (_sumOfPlayerPoints > _sumOfComputerPoints)
-		//	{
-		//		_winer = "Player";
-		//		_looser = "Computer";
-		//	}
-		//	if (_sumOfPlayerPoints < _sumOfComputerPoints)
-		//	{
-		//		_winer = "Computer";
-		//		_looser = "Player";
-		//	}
-		//	if (_sumOfPlayerPoints > _sumOfComputerPoints)
-		//	{
-		//		winersPoints = _sumOfPlayerPoints;
-		//		loosersPoints = _sumOfComputerPoints;
-		//	}
-		//	if (_sumOfPlayerPoints < _sumOfComputerPoints)
-		//	{
-		//		winersPoints = _sumOfComputerPoints;
-		//		loosersPoints = _sumOfPlayerPoints;
-		//	}
+		public override string ToString()
+		{
+			if (_sumOfPlayerPoints > _sumOfComputerPoints)
+			{
+				_winer = "Player";
+				_looser = "Computer";
+			}
+			if (_sumOfPlayerPoints < _sumOfComputerPoints)
+			{
+				_winer = "Computer";
+				_looser = "Player";
+			}
+			if (_sumOfPlayerPoints > _sumOfComputerPoints)
+			{
+				winersPoints = _sumOfPlayerPoints;
+				loosersPoints = _sumOfComputerPoints;
+			}
+			if (_sumOfPlayerPoints < _sumOfComputerPoints)
+			{
+				winersPoints = _sumOfComputerPoints;
+				loosersPoints = _sumOfPlayerPoints;
+			}
 
-		//	return ($"Победил {_winer}! Он набрал {winersPoints}, а {_looser} набрал {loosersPoints}");
-		//}
+			return ($"Победил {_winer}! Он набрал {winersPoints}, а {_looser} набрал {loosersPoints}");
+		}
 	}
 }
