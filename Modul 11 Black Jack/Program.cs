@@ -18,6 +18,8 @@ namespace Modul_11_Black_Jack
 			}
 			Console.WriteLine("Do u want to start new game? y/n");
 			ConsoleKeyInfo key = Console.ReadKey();
+			Console.CursorLeft = 0;
+			Console.WriteLine(' ');
 			if (key.Key == ConsoleKey.Y)
 			{
 				StartGame();
@@ -29,6 +31,8 @@ namespace Modul_11_Black_Jack
 			{
 				Console.WriteLine("Play againe? y/n");
 				ConsoleKeyInfo key1 = Console.ReadKey();
+				Console.CursorLeft = 0;
+				Console.WriteLine(' ');
 				if (key1.Key == ConsoleKey.Y)
 				{
 					StartGame();
