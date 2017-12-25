@@ -17,7 +17,7 @@ namespace Modul_11_Black_Jack
 		public Game()
 		{
 			int index = 0; // проверка на повторение карт
-			foreach (SuitName suits in Enum.GetValues(typeof(SuitName)))
+			foreach (SuitName suits in Enum.GetValues(typeof(SuitName))) // вместо двоек вальты, вмето троек дамы, королей, двоек и троек нет....
 			{
 				foreach (CardName cards in Enum.GetValues(typeof(CardName)))
 				{
