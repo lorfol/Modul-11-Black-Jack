@@ -55,6 +55,8 @@ namespace Modul_11_Black_Jack
 		private void PlayerStart()
 		{
 			_sumOfPlayerPoints = GetTwoFirstCardsForPlayer();
+			if (_sumOfPlayerPoints > 21)
+				_sumOfPlayerPoints = 0;
 
 			while (true)
 			{
@@ -86,8 +88,12 @@ namespace Modul_11_Black_Jack
 				ComputerStart();
 			Console.WriteLine();
 			if (_sumOfComputerPoints != 0)
+			{
+				if (_sumOfPlayerPoints > 21)
+					_sumOfPlayerPoints = 0;
+			}
+			if(_sumOfComputerPoints != 0)
 				ShowWhoWon();
-			
 		}
 
 		private void ComputerStart()
@@ -118,8 +124,12 @@ namespace Modul_11_Black_Jack
 				PlayerStart();
 			Console.WriteLine();
 			if (_sumOfPlayerPoints != 0)
+			{
+				if (_sumOfComputerPoints > 21)
+					_sumOfComputerPoints = 0;
+			}
+			if(_sumOfPlayerPoints != 0)
 				ShowWhoWon();
-
 		}
 
 		private int GetTwoFirstCardsForPlayer()
@@ -168,16 +178,28 @@ namespace Modul_11_Black_Jack
 			Console.WriteLine("----------");
 			return _sumOfComputerPoints;
 		}
-		
+
 		public void ShowWhoWon()
 		{
 			if (_sumOfPlayerPoints > _sumOfComputerPoints)
 				Console.WriteLine("You won! Congratulations!");
 			else if (_sumOfPlayerPoints == _sumOfComputerPoints)
 				Console.WriteLine("Draw.");
-			else Console.WriteLine("Computer won.");
-			Console.ReadKey();
-			System.Environment.Exit(1);
+			else
+			{
+				Console.WriteLine("Computer won.");
+				return;
+			}
 		}
+
+		//string _winer;
+		//string _looser;
+		//int winersPoints;
+		//int loosersPoints;
+
+		//public override string ToString()
+		//{
+		//	return $"Победил {_winer}! Он набрал {winersPoints}, а {_looser} - {loosersPoints}";
+		//}
 	}
 }
