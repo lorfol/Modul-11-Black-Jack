@@ -16,7 +16,7 @@ namespace Modul_11_Black_Jack
 
 		public Game()
 		{
-			int index = 0;
+			int index = 0; // проверка на повторение карт
 			foreach (SuitName suits in Enum.GetValues(typeof(SuitName)))
 			{
 				foreach (CardName cards in Enum.GetValues(typeof(CardName)))
@@ -25,6 +25,7 @@ namespace Modul_11_Black_Jack
 					index++;
 				}
 			}
+			// посмотреть содержимое массива
 			CheckWhoWillFirst();
 		}
 
@@ -83,15 +84,12 @@ namespace Modul_11_Black_Jack
 
 			Console.WriteLine($"U have {_sumOfPlayerPoints} points.");
 			Console.WriteLine();
-
-			if (_sumOfComputerPoints == 0)
+			if (_sumOfComputerPoints == 0 && _sumOfPlayerPoints == 21)
+				ShowWhoWon();
+			if (_sumOfComputerPoints == 0 && _sumOfPlayerPoints != 21)
 				ComputerStart();
 			Console.WriteLine();
-			if (_sumOfComputerPoints != 0)
-			{
-				if (_sumOfPlayerPoints > 21)
-					_sumOfPlayerPoints = 0;
-			}
+		
 			if (_sumOfComputerPoints != 0)
 				ShowWhoWon();
 		}
@@ -120,14 +118,11 @@ namespace Modul_11_Black_Jack
 			}
 			Console.WriteLine($"Computer have {_sumOfComputerPoints} points.");
 			Console.WriteLine();
-			if (_sumOfPlayerPoints == 0)
+			if (_sumOfPlayerPoints == 0 && _sumOfComputerPoints == 21)//11111111111
+				ShowWhoWon();
+			if (_sumOfPlayerPoints == 0 && _sumOfComputerPoints!=21)
 				PlayerStart();
 			Console.WriteLine();
-			if (_sumOfPlayerPoints != 0)
-			{
-				if (_sumOfComputerPoints > 21)
-					_sumOfComputerPoints = 0;
-			}
 			if (_sumOfPlayerPoints != 0)
 				ShowWhoWon();
 		}
@@ -141,7 +136,7 @@ namespace Modul_11_Black_Jack
 				bool isIn = false;
 				random = rand.Next(0, 52);
 
-				while (!isIn)
+				while (!isIn) //в массиве повтор карт. из-за этого первая карта isUsed = true.
 				{
 					if (!arrayOfCards[random].isUsed)
 					{
@@ -153,6 +148,11 @@ namespace Modul_11_Black_Jack
 				}
 			}
 			Console.WriteLine("----------");
+			if (_sumOfPlayerPoints == 22)
+			{
+				_sumOfPlayerPoints = 21;
+				ShowWhoWon(); //22222
+			}
 			return _sumOfPlayerPoints;
 		}
 		private int GetTwoFirstCardsForComputer()
@@ -170,10 +170,15 @@ namespace Modul_11_Black_Jack
 					{
 						_sumOfComputerPoints += (int)arrayOfCards[random].cardName;
 						arrayOfCards[random].isUsed = true;
-						Console.WriteLine($"{arrayOfCards[random].cardName} - {arrayOfCards[random].suitName}");//не должны видеть карты компьютера
+						Console.WriteLine($"{arrayOfCards[random].cardName} - {arrayOfCards[random].suitName}");
 						isIn = true;
 					}
 				}
+			}
+			if (_sumOfComputerPoints == 22)
+			{
+				_sumOfComputerPoints = 21;
+				ShowWhoWon(); // узнать как убрать второй вывод на экран
 			}
 			Console.WriteLine("----------");
 			return _sumOfComputerPoints;
@@ -181,17 +186,18 @@ namespace Modul_11_Black_Jack
 
 		public void ShowWhoWon()
 		{
-			if (_sumOfPlayerPoints > _sumOfComputerPoints)
+			if ((_sumOfPlayerPoints > _sumOfComputerPoints) && _sumOfPlayerPoints<=21)
 				Console.WriteLine("You won! Congratulations!");
-			else if (_sumOfPlayerPoints == _sumOfComputerPoints)
-				Console.WriteLine("Draw.");
-			else
-			{
+			else if((_sumOfPlayerPoints > _sumOfComputerPoints) && _sumOfPlayerPoints > 21)
 				Console.WriteLine("Computer won.");
-				return;
-			}
+			if ((_sumOfPlayerPoints < _sumOfComputerPoints) && _sumOfComputerPoints <= 21)
+				Console.WriteLine("Computer won.");
+			else if((_sumOfPlayerPoints < _sumOfComputerPoints) && _sumOfComputerPoints > 21)
+				Console.WriteLine("You won! Congratulations!");
+			if (_sumOfPlayerPoints == _sumOfComputerPoints)
+				Console.WriteLine("Draw.");
 		}
-
+		
 		string _winer;
 		string _looser;
 		int winersPoints;
@@ -199,25 +205,43 @@ namespace Modul_11_Black_Jack
 
 		public override string ToString()
 		{
-			if (_sumOfPlayerPoints > _sumOfComputerPoints)
+			if ((_sumOfPlayerPoints > _sumOfComputerPoints) && _sumOfPlayerPoints <= 21)
+			{
+				_winer = "Player";
+				_looser = "Computer";
+			}else if((_sumOfPlayerPoints > _sumOfComputerPoints) && _sumOfPlayerPoints > 21)
+				{
+				_winer = "Computer";
+				_looser = "Player";
+			}
+			if ((_sumOfPlayerPoints < _sumOfComputerPoints) && _sumOfComputerPoints <= 21)
+			{
+				_winer = "Computer";
+				_looser = "Player";
+			}else if((_sumOfPlayerPoints < _sumOfComputerPoints) && _sumOfComputerPoints > 21)
 			{
 				_winer = "Player";
 				_looser = "Computer";
 			}
-			if (_sumOfPlayerPoints < _sumOfComputerPoints)
-			{
-				_winer = "Computer";
-				_looser = "Player";
-			}
-			if (_sumOfPlayerPoints > _sumOfComputerPoints)
+			if ((_sumOfPlayerPoints > _sumOfComputerPoints) && _sumOfPlayerPoints <= 21)
 			{
 				winersPoints = _sumOfPlayerPoints;
 				loosersPoints = _sumOfComputerPoints;
 			}
-			if (_sumOfPlayerPoints < _sumOfComputerPoints)
+			else if ((_sumOfPlayerPoints > _sumOfComputerPoints) && _sumOfPlayerPoints > 21)
 			{
 				winersPoints = _sumOfComputerPoints;
 				loosersPoints = _sumOfPlayerPoints;
+			}
+			if ((_sumOfPlayerPoints < _sumOfComputerPoints) && _sumOfComputerPoints <= 21)
+			{
+				winersPoints = _sumOfComputerPoints;
+				loosersPoints = _sumOfPlayerPoints;
+			}
+			else if ((_sumOfPlayerPoints < _sumOfComputerPoints) && _sumOfComputerPoints > 21)
+			{
+				winersPoints = _sumOfPlayerPoints;
+				loosersPoints = _sumOfComputerPoints;
 			}
 
 			return ($"Победил {_winer}! Он набрал {winersPoints}, а {_looser} набрал {loosersPoints}");

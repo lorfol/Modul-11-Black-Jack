@@ -16,6 +16,7 @@ namespace Modul_11_Black_Jack
 				Game game = new Game();
 				Console.WriteLine(game.ToString());
 			}
+			
 			Console.WriteLine("Do u want to start new game? y/n");
 			ConsoleKeyInfo key = Console.ReadKey();
 			Console.CursorLeft = 0;
