@@ -92,7 +92,7 @@ namespace Modul_11_Black_Jack
 				if (_sumOfPlayerPoints > 21)
 					_sumOfPlayerPoints = 0;
 			}
-			if(_sumOfComputerPoints != 0)
+			if (_sumOfComputerPoints != 0)
 				ShowWhoWon();
 		}
 
@@ -128,7 +128,7 @@ namespace Modul_11_Black_Jack
 				if (_sumOfComputerPoints > 21)
 					_sumOfComputerPoints = 0;
 			}
-			if(_sumOfPlayerPoints != 0)
+			if (_sumOfPlayerPoints != 0)
 				ShowWhoWon();
 		}
 
@@ -199,7 +199,28 @@ namespace Modul_11_Black_Jack
 
 		//public override string ToString()
 		//{
-		//	return $"Победил {_winer}! Он набрал {winersPoints}, а {_looser} - {loosersPoints}";
+		//	if (_sumOfPlayerPoints > _sumOfComputerPoints)
+		//	{
+		//		_winer = "Player";
+		//		_looser = "Computer";
+		//	}
+		//	if (_sumOfPlayerPoints < _sumOfComputerPoints)
+		//	{
+		//		_winer = "Computer";
+		//		_looser = "Player";
+		//	}
+		//	if (_sumOfPlayerPoints > _sumOfComputerPoints)
+		//	{
+		//		winersPoints = _sumOfPlayerPoints;
+		//		loosersPoints = _sumOfComputerPoints;
+		//	}
+		//	if (_sumOfPlayerPoints < _sumOfComputerPoints)
+		//	{
+		//		winersPoints = _sumOfComputerPoints;
+		//		loosersPoints = _sumOfPlayerPoints;
+		//	}
+
+		//	return ($"Победил {_winer}! Он набрал {winersPoints}, а {_looser} набрал {loosersPoints}");
 		//}
 	}
 }
